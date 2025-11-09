@@ -12,7 +12,20 @@ dotenv.config();
 
 const app = express();
 
-connectDB();
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+
+// Connect to database
+(async () => {
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error("Failed to connect to database:", error);
+  }
+})();
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
