@@ -1,8 +1,10 @@
-logs
-*.logs
+# Logs
+logs/
+*.log
+npm-debug.log*
 
-#Node module
-.node-modules
+# Node modules
+node_modules/
 
-#Environment varible
+# Environment variables
 .env
